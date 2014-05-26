@@ -1,0 +1,16 @@
+.metadata
+.settings
+.classpath
+.project
+target
+Thumbs.db
+*.log
+*.log.*
+build
+bin
+temp
+update-*.bat
+.DS_Store
+.idea
+*.iml
+.externalToolBuilders
