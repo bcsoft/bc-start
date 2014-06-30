@@ -85,16 +85,17 @@ if [[ $1 == -*s* ]]; then
 	git_clone 'bc-workflow'
 
 	git_clone 'bc-attendance'
+	git_clone 'bc-cert'
 	git_clone 'bc-pmc'
-	#git_clone 'bc-asset'
 
 	git_clone 'bc-business'
 	git_clone 'bc-business-workflow'
 
-	git_clone 'bc-business-workplan'
 	git_clone 'bc-business-arrange'
 	git_clone 'bc-business-cartax'
+	git_clone 'bc-business-cert'
 	git_clone 'bc-business-hcjtz'
+	git_clone 'bc-business-workplan'
 fi
 
 # 对后台源码执行 git pull origin master: -u
@@ -103,16 +104,17 @@ if [[ $1 == -*u* ]]; then
 	git_pull 'bc-workflow'
 
 	git_pull 'bc-attendance'
+	git_pull 'bc-cert'
 	git_pull 'bc-pmc'
-	#git_pull 'bc-asset'
 
 	git_pull 'bc-business'
 	git_pull 'bc-business-workflow'
 
-	git_pull 'bc-business-workplan'
 	git_pull 'bc-business-arrange'
 	git_pull 'bc-business-cartax'
+	git_pull 'bc-business-cert'
 	git_pull 'bc-business-hcjtz'
+	git_pull 'bc-business-workplan'
 
 	cd 'bc-system/src/main/webapp'
 	git_pull 'ui-libs'
@@ -131,16 +133,17 @@ if [[ $1 == -*i* ]]; then
 	mvn_install 'bc-workflow'
 
 	mvn_install 'bc-attendance'
+	mvn_install 'bc-cert'
 	mvn_install 'bc-pmc'
-	#mvn_install 'bc-asset'
 
 	mvn_install 'bc-business'
 	mvn_install 'bc-business-workflow'
 
-	mvn_install 'bc-business-workplan'
 	mvn_install 'bc-business-arrange'
 	mvn_install 'bc-business-cartax'
+	mvn_install 'bc-business-cert'
 	mvn_install 'bc-business-hcjtz'
+	mvn_install 'bc-business-workplan'
 fi
 
 # 启动系统: -r 选项
