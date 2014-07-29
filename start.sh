@@ -76,6 +76,21 @@ git_clone 'bc-workflow' 'bc-workflow-webapp'
 git_clone 'bc-test' 'bc-test-webapp'
 git_clone 'bc-business' 'bc-business-webapp'
 git_clone 'bc-business-workflow' 'bc-business-workflow-webapp'
+# webapp/modules/bc/*
+mkdir -p $root_dir/bc-system/src/main/webapp/modules/bc
+cd $root_dir/bc-system/src/main/webapp/modules/bc
+git_clone 'attendance' 'bc-attendance-webapp'
+git_clone 'pmc' 'bc-pmc-webapp'
+git_clone 'cert' 'bc-cert-webapp'
+git_clone 'attendance' 'bc-attendance-webapp'
+# webapp/modules/bs/*
+mkdir -p $root_dir/bc-system/src/main/webapp/modules/bs
+cd $root_dir/bc-system/src/main/webapp/modules/bs
+git_clone 'arrange' 'bc-business-arrange-webapp'
+git_clone 'cartax' 'bc-business-cartax-webapp'
+git_clone 'workplan' 'bc-business-workplan-webapp'
+git_clone 'cert' 'bc-business-cert-webapp'
+
 
 cd $root_dir
 
