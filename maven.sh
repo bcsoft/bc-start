@@ -65,6 +65,7 @@ maven 'bc-business-cartax' $1
 maven 'bc-business-cert' $1
 maven 'bc-business-hcjtz' $1
 maven 'bc-business-workplan' $1
+maven 'bc-business-gis' $1
 cd ..
 
 echo "$(date '+%Y-%m-%d %H:%M:%S') 结束 (开始于 $ts)"
