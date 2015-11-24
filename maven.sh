@@ -54,18 +54,23 @@ maven 'bc-framework' $1
 maven 'bc-workflow' $1
 
 maven 'bc-attendance' $1
+maven 'bc-category' $1
 maven 'bc-cert' $1
+maven 'bc-express' $1
 maven 'bc-pmc' $1
 
 maven 'bc-business' $1
 maven 'bc-business-workflow' $1
 
 maven 'bc-business-arrange' $1
+maven 'bc-business-car-exception' $1
 maven 'bc-business-cartax' $1
 maven 'bc-business-cert' $1
 maven 'bc-business-hcjtz' $1
 maven 'bc-business-workplan' $1
 maven 'bc-business-gis' $1
+maven 'bc-business-lawsuit' $1
+maven 'bc-business-financial' $1
 cd ..
 
 echo "$(date '+%Y-%m-%d %H:%M:%S') 结束 (开始于 $ts)"
