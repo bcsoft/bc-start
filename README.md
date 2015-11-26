@@ -98,28 +98,36 @@ PATH 添加 %M2_HOME%/bin (Windows)、$M2_HOME/bin (Linux、Mac OS)
 ## 六）安装数据库
 系统使用 PostgreSQL 9+ 数据库（推荐安装官方绿色版），下载安装后，创建名为 bcsystem 的开发数据库（拥有者的账号密码也同时设置为 bcsystem），
 创建成功后，向管理员索要开发环境使用的数据库备份文件，将其导入到刚创建的 bcsystem 数据库中即可。  
-以下为 Windows 的安装、初始化范例：  
-1. 下载安装绿色版 PostgreSQL  
+以下为 Windows 的安装、初始化范例：
+
+- 下载安装绿色版 PostgreSQL  
 [官网下载](http://www.postgresql.org/download) 或 `192.168.0.222 /file/tools/postgresql/9.4/postgresql-9.4.5-1-windows-x64-binaries.zip` 下载、解压到 /your/path/to/postgresql/，确认解压后的目录结构如下：
 ```
 /your/path/to/postgresql/bin
                         /lib
                         /share
-                        /...  
+                        /...
 ```
-2. 将 /your/path/to/postgresql/bin 添加到环境变量 Path 内
-3. 命令行输入 `psql -dpostgres` 登录数据库管理端，如下图所示：  
+- 将 /your/path/to/postgresql/bin 添加到环境变量 Path 内
+- 创建数据目录  
+\> md /your/path/to/postgresql/data
+- 执行命令初始化数据库  
+\> initdb -D "/your/path/to/postgresql/data"
+- 命令行启动数据库  
+\> postgres -D "/your/path/to/postgresql/data"
+- 登录数据库管理端  
+数据库启动成功后，命令行输入 `psql -dpostgres` 登录数据库管理端，如下图所示：  
 ![psql-login](asset/psql-login.png)  
-4. 创建登录密码为 bcsystem 的 bcsystem 账号  
+- 创建登录密码为 bcsystem 的 bcsystem 账号  
 postgres=# create role bcsystem login password 'bcsystem';  
-5. 创建 owner 为 bcsystem 的 bcsystem 数据库  
+- 创建 owner 为 bcsystem 的 bcsystem 数据库  
 postgres=# create database bcsystem with encoding 'UTF-8' owner bcsystem;  
-6. 退出 postgres 的登录
+- 退出 postgres 的登录
 postgres=# \q;  
-7. 命令行导入开发环境数据库  
+- 命令行导入开发环境数据库  
 \> psql -dbcsystem -Ubcsystem < xxx.sql  
 注：xxx.sql 文件需向管理员索取。
-8. 使用 pgAdmin III 客户端连接数据库  
+- 使用 pgAdmin III 客户端连接数据库  
 运行 /your/path/to/postgresql/bin/pgAdmin3.exe，添加数据库连接，如下图所示：  
 ![psql-pgadmin-connect](asset/psql-pgadmin-connect.png)  
 ![psql-pgadmin-main](asset/psql-pgadmin-main.png)  
