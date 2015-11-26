@@ -157,7 +157,7 @@ $ git clone -o bitbucket git@bitbucket.org:bctaxi/bc-business-webapp.git bc-busi
 - 检出 bc-system/src/main/webapp/bc-test
 ```
 $ cd /d/Work/bc-system/src/main/webapp/
-$ git clone -o bitbucket git@bitbucket.org:bctaxi/bc-test-webapp.git bc-test
+$ git clone -o bitbucket git@bitbucket.org:bctaxi/bc-test.git
 ```
 - 检出 bc-system/src/main/webapp/ui-libs
 ```
