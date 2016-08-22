@@ -5,7 +5,7 @@
 - 下载绿色版的 JDK8<br>
 用 ftp 工具连接到 192.168.0.222（账号reader、密码reader），
 文件路径为 /file/tools/java/jdk/green/jdk1.8.0_102_x64.7z  
-注：也可以到官网下载安装。
+注：也可以到[官网](http://www.oracle.com/technetwork/java/javase/downloads/index.html)下载安装。
 - 将 jdk1.8.0_102_x64.7z 解压到 /your/path/to/jdk (推荐为 /green/jdk)，确认解压后的目录结构如下：
 ```
 /your/path/to/jdk/jdk1.8.0_102_x64/bin
