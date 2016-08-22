@@ -1,23 +1,22 @@
 # BC 系统开发环境配置
 
-
 ## 一）安装 JDK
 
 - 下载绿色版的 JDK8<br>
 用 ftp 工具连接到 192.168.0.222（账号reader、密码reader），
-文件路径为 /file/tools/java/jdk/green/jdk1.8.0_60_x64.rar  
+文件路径为 /file/tools/java/jdk/green/jdk1.8.0_102_x64.7z  
 注：也可以到官网下载安装。
-- 将 jdk1.8.0_60_x64.rar 解压到 /your/path/to/jdk，确认解压后的目录结构如下：
+- 将 jdk1.8.0_102_x64.7z 解压到 /your/path/to/jdk (推荐为 /green/jdk)，确认解压后的目录结构如下：
 ```
-/your/path/to/jdk/jdk1.8.0_60_x64/bin
-                                /jre
-                                /lib
-                                /...
+/your/path/to/jdk/jdk1.8.0_102_x64/bin
+                                  /jre
+                                  /lib
+                                  /...
 ```
 - 配置环境变量
 ```
-JAVA_HOME = /your/path/to/jdk/jdk1.8.0_60_x64
-PATH 添加 %JAVA_HOME%/bin (Windows)、$JAVA_HOME/bin (Linux、Mac OS)
+JAVA_HOME = /your/path/to/jdk/jdk1.8.0_102_x64
+PATH 添加 %JAVA_HOME%/bin (Windows)、$JAVA_HOME/bin (Linux、MacOS)
 ```
 - 验证安装是否正确
 ```
@@ -28,7 +27,7 @@ $ java -version
 
 - 到 [Maven 官网](http://maven.apache.org/) 下载最新版的 maven 二进制包，如 [apache-maven-3.3.9-bin.tar.gz](http://apache.fayea.com/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz)。
 
-- 将 apache-maven-3.3.9-bin.tar.gz 解压到 /your/path/to/maven，确认解压后的目录结构为如下：
+- 将 apache-maven-3.3.9-bin.tar.gz 解压到 /your/path/to/maven (推荐为 /green/maven)，确认解压后的目录结构为如下：
 ```
 /your/path/to/maven/apache-maven-3.3.9/bin
                                       /boot
@@ -40,17 +39,22 @@ $ java -version
 - 配置环境变量
 ```
 M2_HOME = /your/path/to/maven/apache-maven-3.3.9
-PATH 添加 %M2_HOME%/bin (Windows)、$M2_HOME/bin (Linux、Mac OS)
+PATH 添加 %M2_HOME%/bin (Windows)、$M2_HOME/bin (Linux、MacOS)
 ```
 
 - 增加 Maven 用户配置文件  
-在用户目录下创建 .m2 目录：(Windows)
+在用户目录下创建 .m2 目录：
 ```
+Windows:
 > C:
 > cd %USERPROFILE%
 > md .m2
+
+Linux、MacOS:
+$ cd ~
+$ mkdir .m2
 ```
-拷贝这里的 [settings.xml](https://bitbucket.org/bctaxi/bc-start/src/2b4bd5af9e0b?at=master) 文件到 .m2 目录下。并将文件内的 localRepository 节点的值修改为有效的路径。
+拷贝这里的 [settings.xml](https://github.com/bcsoft/bc-start/blob/master/settings.xml) 文件到 .m2 目录下。并将文件内的 localRepository 节点的值修改为有效的路径，Windows 下推荐为 'D:/Repositories/MavenRepository'。
 
 - 验证安装是否正确
 ```
@@ -61,10 +65,10 @@ PATH 添加 %M2_HOME%/bin (Windows)、$M2_HOME/bin (Linux、Mac OS)
 [Maven开发环境配置](http://rongjih.blog.163.com/blog/static/33574461201041615854740/)  
 [官方参考文档](http://maven.apache.org/guides/index.html)  
 [Maven权威指南](http://books.sonatype.com/mvnref-book/reference/index.html)  
-《Maven权威指南中文版》可到 192.168.0.222 /file/book/Maven权威指南(中文带目录导航).pdf 下载。
+《Maven权威指南中文版》可到 `192.168.0.222 /file/book/Maven权威指南(中文带目录导航).pdf` 下载。
 
 ## 三）安装 Git 
-- [官网下载](http://git-scm.com/downloads) 或 `192.168.0.222 /file/tools/git/Git-2.6.3-64-bit.exe` 下载安装。  
+- [官网下载](http://git-scm.com/downloads) 或 `192.168.0.222 /file/tools/win/git/Git-2.9.0-64-bit.exe (Windows)` 下载安装。  
 注：安装到 "Select Components" 界面时，注意要选择如下安装选项:
   - [x] Windows Explorer integration
     - [x] Git Bash Here
@@ -82,26 +86,26 @@ PATH 添加 %M2_HOME%/bin (Windows)、$M2_HOME/bin (Linux、Mac OS)
 [Git常用操作命令](http://rongjih.blog.163.com/blog/static/335744612010112562833316/)
 
 ## 四）配置 ssh key
-如果已经有相应的密钥对，可以直接将私钥放到 "%USERPROFILE%/.ssh/" 目录下即可。如果还没有密钥对就按如下步骤创建：
+如果已经有相应的密钥对，可以直接将私钥放到 `%USERPROFILE%/.ssh (Windows) 或 ~/.ssh (Linux、 MacOS)` 目录下即可。如果还没有密钥对就按如下步骤创建：
 
 - 打开 Git 的命令行窗口，输入`$ ssh-keygen -C "your@email.com" -t rsa`，按提示输入相关信息生成 rsa key（注意email地址按你的实际输入）；默认就会在用户目录下创建名为“.ssh”的目录，并在该目录下生成两个文件：`id_rsa.pub (公钥)` 和 `id_rsa (私钥)`。
 
 - 如果想修改上面创建的密钥的密码，执行命令 `$ ssh-keygen -f '/c/Documents and Settings/yourName/.ssh/id_rsa' -p`，根据提示输入原来的密码和设置新的密码即可。
 
 ## 五）[可选] 安装 TortoiseGit (Windows)
-[官网下载](https://tortoisegit.org) 或 `192.168.0.222 /file/tools/git/TortoiseGit-1.8.16.0-64bit.msi` 下载安装。  
-汉化：`192.168.0.222 /file/tools/git/TortoiseGit-LanguagePack-1.8.16.0-64bit-zh_CN.msi`  
-安装成功后你将会在资源管理器的鼠标右键菜单中看到相应的选项，如下图所示：  
+[官网下载](https://tortoisegit.org) 或 `192.168.0.222 /file/tools/win/git/TortoiseGit-2.2.0.0-64bit.msi` 下载安装。  
+汉化：`192.168.0.222 /file/tools/win/git/TortoiseGit-LanguagePack-2.2.0.0-64bit-zh_CN.msi`  
+安装成功后会在资源管理器的鼠标右键菜单中看到相应的选项，如下图所示：  
 ![TortoiseGit 右键菜单](/asset/TortoiseGit.png)
 
 
 ## 六）安装数据库
-系统使用 PostgreSQL 9+ 数据库（推荐安装官方绿色版），下载安装后，创建名为 bcsystem 的开发数据库（拥有者的账号密码也同时设置为 bcsystem），
+系统使用 PostgreSQL 9.5+ 数据库（推荐安装官方绿色版），下载安装后，创建名为 bcsystem 的开发数据库（拥有者的账号密码也同时设置为 bcsystem），
 创建成功后，向管理员索要开发环境使用的数据库备份文件，将其导入到刚创建的 bcsystem 数据库中即可。  
 以下为 Windows 的安装、初始化范例：
 
 - 下载安装绿色版 PostgreSQL  
-[官网下载](http://www.postgresql.org/download) 或 `192.168.0.222 /file/tools/postgresql/9.4/postgresql-9.4.5-1-windows-x64-binaries.zip` 下载、解压到 /your/path/to/postgresql/，确认解压后的目录结构如下：
+[官网下载](http://www.postgresql.org/download) 或 `192.168.0.222 /file/tools/win/postgresql/9.5/postgresql-9.5.3-1-windows-x64-binaries.zip` 下载、解压到 /your/path/to/postgresql/ (推荐为 D:\green\pgsql)，确认解压后的目录结构如下：
 ```
 /your/path/to/postgresql/bin
                         /lib
@@ -144,27 +148,32 @@ BC 系统的代码统一放在 https://bitbucket.org/bctaxi 上，请将你的 b
 $ cd /d/Work/
 $ git clone -o bitbucket git@bitbucket.org:bctaxi/bc-system.git
 ```
-- 检出 bc-system/src/main/webapp/bc
-```
-$ cd /d/Work/bc-system/src/main/webapp/
-$ git clone -o bitbucket git@bitbucket.org:bctaxi/bc-framework-webapp.git bc
-```
+
 - 检出 bc-system/src/main/webapp/bc-business
 ```
 $ cd /d/Work/bc-system/src/main/webapp/
 $ git clone -o bitbucket git@bitbucket.org:bctaxi/bc-business-webapp.git bc-business
 ```
+
+- 检出 bc-system/src/main/webapp/bc
+```
+$ cd /d/Work/bc-system/src/main/webapp/
+$ git clone -o github git@github.com:bcsoft/bc-framework-webapp.git bc
+```
+
 - 检出 bc-system/src/main/webapp/bc-test
 ```
 $ cd /d/Work/bc-system/src/main/webapp/
-$ git clone -o bitbucket git@bitbucket.org:bctaxi/bc-test.git
+$ git clone -o github git@github.com:bcsoft/bc-test-webapp.git
 ```
+
 - 检出 bc-system/src/main/webapp/ui-libs
 ```
 $ cd /d/Work/bc-system/src/main/webapp/
-$ git clone -o bitbucket git@bitbucket.org:bctaxi/ui-libs.git
-$ git clone -o bitbucket git@bitbucket.org:bctaxi/ui-libs-demo.git
+$ git clone -o github git@github.com:bcsoft/ui-libs.git
+$ git clone -o github git@github.com:bcsoft/ui-libs-demo.git
 ```
+
 - 在命令行下运行 BC 系统
 ```
 > D:
@@ -176,8 +185,8 @@ $ git clone -o bitbucket git@bitbucket.org:bctaxi/ui-libs-demo.git
 ## 八）安装 IntelliJ Idea 开发环境
 按如下步骤安装配置 IntelliJ Idea：
 
-- 安装 IntelliJ Idea 15+  
-[官网下载](http://www.jetbrains.com/idea/) 或 `192.168.0.222 /file/tools/java/idea/ideaIU-15.0.1.exe` 下载安装。
+- 安装 IntelliJ Idea 2016+  
+[官网下载](http://www.jetbrains.com/idea/) 或 `192.168.0.222 /file/tools/java/idea/ideaIU-2016.2.exe` 下载安装。
 
 - 项目编码设置  
 导航至 File/Other Settings/Default Settings...->File encoding，  

@@ -1,51 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
-  <localRepository>D:/Repositories/MavenRepository</localRepository>
+	<localRepository>D:/Repositories/MavenRepository</localRepository>
 	<servers>
-		<server>  
-	    <id>nexus-releases</id>  
-	    <username>admin</username>  
-	    <password>admin123</password>  
-	  </server>  
-	  <server>  
-	    <id>nexus-snapshots</id>  
-	    <username>admin</username>  
-	    <password>admin123</password>  
-	  </server>
+		<server>
+			<id>nexus-releases</id>
+			<username>admin</username>
+			<password>******</password>
+		</server>
+		<server>
+			<id>nexus-snapshots</id>
+			<username>admin</username>
+			<password>******</password>
+		</server>
 	</servers>
-	 <mirrors>
-    <mirror>
-      <!--This sends everything else to /public -->
-      <id>nexus</id>
-      <mirrorOf>*</mirrorOf>
-      <url>http://192.168.0.222:8081/nexus/content/groups/public</url>
-    </mirror>
-  </mirrors>
-  <profiles>
-    <profile>
-      <id>nexus</id>
-      <!--Enable snapshots for the built in central repo to direct -->
-      <!--all requests to nexus via the mirror -->
-      <repositories>
-        <repository>
-          <id>central</id>
-          <url>http://central</url>
-          <releases><enabled>true</enabled></releases>
-          <snapshots><enabled>true</enabled></snapshots>
-        </repository>
-      </repositories>
-     <pluginRepositories>
-        <pluginRepository>
-          <id>central</id>
-          <url>http://central</url>
-          <releases><enabled>true</enabled></releases>
-          <snapshots><enabled>true</enabled></snapshots>
-        </pluginRepository>
-      </pluginRepositories>
-    </profile>
-  </profiles>
-  <activeProfiles>
-    <!--make the profile active all the time -->
-    <activeProfile>nexus</activeProfile>
-  </activeProfiles>
+	<mirrors>
+		<mirror>
+			<!--This sends everything else to /public -->
+			<id>nexus</id>
+			<name>nexus</name>
+			<mirrorOf>*</mirrorOf>
+			<url>http://192.168.0.222:8082/nexus3/repository/maven-public/</url>
+			<!--<url>http://192.168.0.222:8081/nexus/content/groups/public</url>-->
+		</mirror>
+	</mirrors>
+	<profiles>
+		<profile>
+			<id>nexus</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<!--Enable snapshots for the built in central repo to direct -->
+			<!--all requests to nexus via the mirror -->
+			<repositories>
+				<repository>
+					<id>central</id>
+					<url>http://central</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>central</id>
+					<url>http://central</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+			<properties>
+				<downloadSources>true</downloadSources>
+				<downloadJavadocs>true</downloadJavadocs>
+				<deploy.nexus-releases.url>http://192.168.0.222:8082/nexus3/repository/maven-releases/</deploy.nexus-releases.url>
+				<deploy.nexus-snapshots.url>http://192.168.0.222:8082/nexus3/repository/maven-snapshots/</deploy.nexus-snapshots.url>
+			</properties>
+		</profile>
+	</profiles>
 </settings>
