@@ -51,6 +51,22 @@
         <deploy.nexus-releases.url>http://192.168.0.222:8082/nexus3/repository/maven-releases/</deploy.nexus-releases.url>
         <deploy.nexus-snapshots.url>http://192.168.0.222:8082/nexus3/repository/maven-snapshots/</deploy.nexus-snapshots.url>
       </properties>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+      </pluginRepositories>
     </profile>
   </profiles>
 </settings>
