@@ -6,25 +6,27 @@
 
 ### 1.1. 安装
 
-内网用户可用 ftp 工具（[FlashFXP5+](http://pan.baidu.com/s/1o8LnHcI) 或 [CuteFTP9+](http://pan.baidu.com/s/1o7H9HhC)）到 192.168.0.222 (账号密码均为 reader) 下载绿色版的 JDK 1.8，文件路径为 `/file/tools/java/jdk/green/jdk1.8.0_102_x64.7z`。或者下载我们上传到百度云的这个绿色版，点 [这里](http://pan.baidu.com/s/1kUQ3uIj)。
+内网用户可用 ftp 工具（推荐使用免费的 [FileZilla](https://filezilla-project.org)）到 192.168.0.222 (账号密码均为 reader) 下载绿色版的 JDK 1.8，文件路径为 `/tools/java/jdk/green/jdk1.8.0_152_x64_win10.zip`。或者下载我们上传到百度云的这个绿色版，点 [这里](https://pan.baidu.com/s/1hFal1X-t5RxEX2W1RIr71g) 提取码为 `kgq8`。
 
 也可到 Oracle 官网下载最新安装版的 [Java SE Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 自行安装。
 
 确认解压后（绿色版）或安装后（安装版）的目录结构如下：
 
 ```
-/your/path/to/jdk/jdk1.8.0_102_x64/bin
+/green/java/jdk1.8.0_152_x64_win10/bin
                                   /jre
                                   /lib
                                   /...
 ```
+
+> 路径可以任意指定，Windows 系统我们推荐统一将绿色版软件安装到 D 盘的 `/green/` 目录下。
 
 ### 1.2. 配置环境变量
 
 添加系统环境变量 `JAVA_HOME`，路径指向上面的安装路径。
 
 ```
-JAVA_HOME = /your/path/to/jdk/jdk1.8.0_102_x64
+JAVA_HOME = /green/java/jdk1.8.0_152_x64_win10
 ```
 
 对于 Windows 系统，Path 环境变量添加 `%JAVA_HOME%\bin`。  
@@ -35,25 +37,25 @@ JAVA_HOME = /your/path/to/jdk/jdk1.8.0_102_x64
 命令行执行 `java -version` 命令，能看到类似如下的版本信息输出，即表示安装配置正确：
 
 ```
-java version "1.8.0_102"
-Java(TM) SE Runtime Environment (build 1.8.0_102-b14)
-Java HotSpot(TM) 64-Bit Server VM (build 25.102-b14, mixed mode)
+java version "1.8.0_152"
+Java(TM) SE Runtime Environment (build 1.8.0_152-b16)
+Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)
 ```
 
 ## 2. 安装 Maven
 
-我们的开发环境需要 Maven 3.3 以上的版本。从官网下载的压缩包就是绿色版的，解压后配置环境变量即可直接使用。
+我们的开发环境需要 Maven 3.6+ 以上的版本。从官网下载的压缩包就是绿色版的，解压后配置环境变量即可直接使用。
 
 ### 2.1. 安装
 
-到 [Maven 官网](http://maven.apache.org/) 下载最新版的 maven 二进制包，如 [apache-maven-3.5.0-bin.tar.gz](http://mirrors.hust.edu.cn/apache/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz)。将 `apache-maven-3.5.0-bin.tar.gz` 解压到 `/your/path/to/maven`，确认解压后的目录结构如下：
+到 [Maven 官网](https://maven.apache.org/) 下载最新版的 maven 二进制包，如 [apache-maven-3.6.1-bin.tar.gz](http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz)。将 `apache-maven-3.6.1-bin.tar.gz` 解压到 `/green/maven/`，确认解压后的目录结构如下：
 
 ```
-/your/path/to/maven/apache-maven-3.5.0/bin
-                                      /boot
-                                      /conf
-                                      /lib
-                                      /...
+/green/maven/apache-maven-3.6.1/bin
+                               /boot
+                               /conf
+                               /lib
+                               /...
 ```
 
 ### 2.2. 配置环境变量
@@ -61,7 +63,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.102-b14, mixed mode)
 添加系统环境变量 `M2_HOME`，路径指向上面的安装路径。
 
 ```
-M2_HOME = /your/path/to/maven/apache-maven-3.5.0
+M2_HOME = /green/maven/apache-maven-3.6.1
 ```
 
 对于 Windows 系统，Path 环境变量添加 `%M2_HOME%\bin`。  
@@ -100,24 +102,23 @@ Linux、MacOS: <localRepository>~/MavenRepository</localRepository>
 命令行执行 `mvn -v` 命令，能看到类似如下的版本信息输出，即表示安装配置正确：
 
 ```
-Apache Maven 3.5.0 (ff8f5e7444045639af65f6095c62210b5713f426; 2017-04-04T03:39:06+08:00)
-Maven home: D:\green\apache-maven-3.5.0\bin\..
-Java version: 1.8.0_102, vendor: Oracle Corporation
-Java home: D:\green\jdk1.8.0_102_x64\jre
+Apache Maven 3.6.1 (d66c9c0b3152b2e69ee9bac180bb8fcc8e6af555; 2019-04-05T03:00:29+08:00)
+Maven home: D:\green\maven\apache-maven-latest\bin\..
+Java version: 1.8.0_152, vendor: Oracle Corporation, runtime: D:\green\java\jdk1.8.0_152_x64_win10\jre
 Default locale: zh_CN, platform encoding: GBK
 OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 ```
 
 ## 3. 安装 Git
 
-我们的开发环境需要 Git 2.9 以上的版本。
+我们的开发环境需要 Git 2.9 以上的版本，安装当前最新版本即可。
 
 
 ### 3.1. 安装
 
 到 [Git 官网](http://git-scm.com/downloads) 下载适合的平台版本安装即可，如：  
 
-》 Windows: 下载安装 [Git-2.13.1.2-64-bit.exe](https://github.com/git-for-windows/git/releases/download/v2.13.1.windows.2/Git-2.13.1.2-64-bit.exe)，注意安装到 `Select Components` 界面时，要选择如下安装选项:
+》 Windows: 下载安装 [Git-2.21.0-64-bit.exe](https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-64-bit.exe)，注意安装到 `Select Components` 界面时，要选择如下安装选项:
 
 ```
 - [x] Windows Explorer integration
@@ -136,7 +137,7 @@ OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 命令行执行 `git --version` 命令，能看到类似如下的版本信息输出，即表示安装配置正确：
 
 ```
-git version 2.9.0.windows.1
+git version 2.21.0.windows.1
 ```
 
 如果是 Windows 系统，在资源管理器空白的地方点击鼠标右键，能够看到 `Git Bash Here` 和 `Git GUI Here` 两个菜单项就证明安装 OK，点击 `Git Bash Here` 菜单项就可进入 `Git 命令行`，如下图所示：
@@ -153,7 +154,7 @@ git version 2.9.0.windows.1
 
 ## 5. [可选] 安装 TortoiseGit (Windows)
 
-到 [TortoiseGit 官网](https://tortoisegit.org) 下载安装 TortoiseGit，内网用户可到 `192.168.0.222 /file/tools/win/git/TortoiseGit-2.4.0.2-64bit.msi` 下载，汉化：`192.168.0.222 /file/tools/win/git/TortoiseGit-LanguagePack-2.4.0.0-64bit-zh_CN.msi`。
+到 [TortoiseGit 官网](https://tortoisegit.org) 下载安装 TortoiseGit，内网用户可到 `192.168.0.222 /tools/git/TortoiseGit-2.8.0.0-64bit.msi` 下载，汉化：`192.168.0.222 /tools/git/TortoiseGit-LanguagePack-2.8.0.0-64bit-zh_CN.msi`。
 
 安装成功后会在资源管理器的鼠标右键菜单中看到相应的选项，如下图所示：  
 ![TortoiseGit 右键菜单](/asset/TortoiseGit.png)
@@ -166,35 +167,35 @@ git version 2.9.0.windows.1
 
 ### 6.1. 下载安装绿色版 PostgreSQL
 
-到 [PostgreSQL 官网](http://get.enterprisedb.com/postgresql/postgresql-9.5.4-1-windows-x64-binaries.zip) 下载或局域网到 `192.168.0.222 /file/tools/win/postgresql/9.5/postgresql-9.5.3-1-windows-x64-binaries.zip` 下载，解压到 `/your/path/to/postgresql`，确认解压后的目录结构如下：
+到 [PostgreSQL 官网](http://get.enterprisedb.com/postgresql/postgresql-9.5.12-1-windows-x64-binaries.zip) 下载或局域网到 `192.168.0.222 /tools/postgres/postgresql-9.5.12-1-windows-x64-binaries.zip` 下载，解压到 `/green/postgres/postgres-9.5`，调整解压后的目录结构为如下：
 
 ```
-/your/path/to/postgresql/bin
-                        /lib
-                        /share
-                        /...
+/green/postgres/postgres-9.5/bin
+                            /lib
+                            /share
+                            /...
 ```
 
 ### 6.2. 配置环境变量
 
-将 `/your/path/to/postgresql/bin` 添加到环境变量 `Path` 内。
+将 `/green/postgres/postgres-9.5/bin` 添加到环境变量 `Path` 内。
 
 ### 6.3. 初始化绿色版数据库
 
 ```
 # 创建数据目录  
-> md /your/path/to/postgresql/data
+$ mkdir /data/postgres9.5-data
 
 # 执行命令初始化绿色版数据库  
-> initdb -D "/your/path/to/postgresql/data"
+$ initdb -D "/data/postgres9.5-data"
 
 # 启动数据库  
-> postgres -D "/your/path/to/postgresql/data"
+$ postgres -D "/data/postgres9.5-data"
 ```
 
 ### 6.4. 命令行创建 BC 系统需要的 bcsystem 数据库
 
-数据库启动成功后，命令行输入 `psql -dpostgres` 登录数据库管理端，如下图所示：  
+数据库启动成功后，命令行输入 `psql -d postgres` 登录数据库管理端，如下图所示：  
 ![psql-login](asset/psql-login.png)
 
 登录后，执行如下命令创建账号、数据库：
@@ -215,14 +216,14 @@ postgres=# \q;
 用如下命令行导入开发环境数据库：
 
 ```  
-> psql -dbcsystem -Ubcsystem < xxx.sql
+> psql -d bcsystem -U bcsystem < xxx.sql
 ```
 
 注：xxx.sql 数据库备份文件需向管理员索取。
 
 ### 6.6. 使用 pgAdmin3 客户端连接数据库
 
-运行 /your/path/to/postgresql/bin/pgAdmin3.exe，添加数据库连接，如下图所示：  
+运行 /green/postgres/postgres-9.5/bin/pgAdmin3.exe，添加数据库连接，如下图所示：  
 ![psql-pgadmin-connect](asset/psql-pgadmin-connect.png)  
 ![psql-pgadmin-main](asset/psql-pgadmin-main.png)  
 
@@ -235,54 +236,76 @@ BC 系统的业务模块代码统一放在 https://git.oschina.net/bctaxi 上，
 ### 7.1. 检出 BC 系统源码
 
 ```
-$ cd /d/work/bctaxi
-$ git clone git@git.oschina.net:bctaxi/bc-system.git
+$ cd /work
+$ git clone git@gitee.com:bctaxi/bc-system.git
 $ cd bc-system
 $ git submodule init
 $ git submodule update
+$ git submodule foreach git checkout master
 ```
 
 ### 7.2. 启动 BC 系统
 
 ```
 $ cd bc-system
-$ mvn jetty:run -Ppostgresql -Dapp.debug=true -Djetty.path=/test -Djetty.port=8081
+$ mvn jetty:run
 ```
 
 系统成功启动后访问地址为：<http://localhost:8081/test>。
 
 ## 8. 安装 IntelliJ Idea 开发环境
 
-以下以 Windows 系统为例子，详细说明 [IntelliJ Idea](http://www.jetbrains.com/idea/) 的安装配置，请自行下载最新版本安装，以下的截图是 `2016.2` 版的，新版本的参考进行设置即可：
+以下以 Windows 系统为例子，详细说明 [IntelliJ Idea](http://www.jetbrains.com/idea/) 的安装配置，请自行下载最新版本安装，以下的截图是 `2019.1` 版的，新版本的参考进行设置即可：
 
 ### 8.1. 下载安装
 
-推荐下载安装旗舰版，社区版的功能比较弱，但也可以使用。官网下载地址为 <http://www.jetbrains.com/idea>，局域网可以到 `192.168.0.222 /file/tools/java/idea/ideaIU-[version].exe` 下载。
+推荐下载安装旗舰版，社区版的功能比较弱，但也可以使用。官网下载地址为 <http://www.jetbrains.com/idea>，局域网可以到 `192.168.0.222 /tools/idea/ideaIU-[version].zip` 下载。推荐下载安装官方绿色版而不是安装版，解压即可使用。
+
+如 Windows 下解压下载的 `ideaIU-2019.1.win.zip` 到 `D:/green/idea/ideaIU-2019.1.win/`，调整解压后的目录结构为如下：
+
+```
+D:/green/idea/ideaIU-2019.1.win/bin
+                             /lib
+                             /plugins
+                             /...
+```
+
+修改 `D:/green/idea/ideaIU-2019.1.win/bin/idea.properties` 文件，修改缓存目录的配置为如下：
+
+```
+idea.config.path=D:/data/idea/.ideaU191/config
+idea.system.path=D:/data/idea/.ideaU191/system
+```
+
+然后手动创建上述的两个 `config`、`system` 目录即可。
 
 ### 8.2. 项目编码设置
 
-导航至 `File/Other Settings/Default Settings...->File encoding` 菜单，
-将 `IDE Encoding` 和 `Project Encoding` 设置为 `UTF-8`。
+导航至 `File/Other Settings/Settings for New Projects...>Editor>File Encodings` 菜单，
+将 `Global Encoding` 和 `Project Encoding` 设置为 `UTF-8`。
+
+> 上述是针对 idea 新建项目的默认配置入口，如果是已经创建的现有 idea 项目，则进入 `File/Settings...>Editor>File Encodings` 修改。下面的相关配置类同。
 
 ### 8.3. 属性文件中文转码设置
 
-导航至 `File/Other Settings/Default Settings...->File encoding` 菜单，选中 `Transparent native-to-ascii conversion`，参考下图：  
+导航至 `File/Other Settings/Settings for New Projects...>Editor>File Encodings` 菜单:
+
+- `Default encoding for properties files` 设置为 `ISO-8859-1`
+- 选中 `Transparent native-to-ascii conversion`
+
+参考下图：  
 ![idea-properties](asset/idea-properties.png)
 
 设置后，默认情况下 IDEA 将属性文件中的 Unicode 编码保存为大写，我们项目要求保存为小写，故需修改 `bin/idea.properties` 文件，增加 `idea.native2ascii.lowercase=true` 属性配置。
 
 ### 8.4. 文件缩进设置
 
-文件缩进设置有用 tab 键和 2 个空格两种，以前遗留的所有的 [bctaxi]、[bc-framework] 下的项目统一使用 tab 键缩进，新的 [gftaxi]、[simter] 下的项目统一使用 2 个空格的缩进，请特别留意不要混淆。
+文件缩进设置有用 tab 键和 2 个空格两种，以前遗留的所有的 [bctaxi]、[bc-framework] 下的项目曾经使用 tab 键缩进，现已改为和新的 [gftaxi]、[simter] 下的项目一样，全部统一使用 2 个空格的缩进。
 
-[gftaxi]、[simter] 项目需加载 [simter-parent/.../idea-code-style.xml](https://github.com/simter/simter-parent/blob/master/idea-code-style.xml) 配置文件。
+参考下图加载 [simter-parent/.../idea-code-style.xml](https://github.com/simter/simter-parent/blob/master/idea-code-style.xml) 配置：  
+![idea-config-code-style-bc](asset/idea-config-code-style.png)
 
-[bctaxi]、[bc-framework] 项目需加载 [bc-framework/.../idea-code-style.xml](https://github.com/bcsoft/bc-framework/blob/master/idea-code-style.xml) 配置文件。
-
-参考下图进行配置：  
-![idea-config-code-style-bc](asset/idea-config-code-style-bc.png)
-
-上述两个配置文件，本质上是导航至 `File/Other Settings/Default Settings...->Editor/Code Style/Java` 菜单，进行相应的配置。
+上述配置文件，本质上是导航至 `File/Other Settings/Default Settings...->Editor/Code Style/Java` 菜单，进行相应的配置。
 
 ### 8.5. [可选] 显示文件的空格和换行符设置
 
@@ -294,7 +317,7 @@ $ mvn jetty:run -Ppostgresql -Dapp.debug=true -Djetty.path=/test -Djetty.port=80
 ### 8.6. 导入 BC 系统源码项目
 
 1. 导航至 `File/New/Project from Existing Sources...` 菜单。
-2. 在弹出的对话框中选中项目 `D:/work/bctaxi/bc-system，然后点击 OK 按钮继续。
+2. 在弹出的对话框中选中项目 `D:/work/bc-system`，然后点击 `OK` 按钮继续。
 3. 选中 `Import project from external model` 和 `Maven`，点击 `Next` 继续，如下图所示：
 ![idea-import-project](asset/idea-import-project.png)  
 4. 接下来就一路 `Next` 即可。
@@ -304,7 +327,7 @@ $ mvn jetty:run -Ppostgresql -Dapp.debug=true -Djetty.path=/test -Djetty.port=80
 按下图所示进行配置：
 ![idea-config-bcsystem](asset/idea-config-bcsystem.png) 
 
-命令行参数为 `jetty:run -Dapp.debug=true -Djetty.path=/test -Djetty.port=8081`。  
+命令行参数为 `jetty:run -D app.debug=true -D jetty.path=/test -D jetty.port=8081`。  
 配置完成后点击下图中的 Run 或 Debug 按钮即可启动系统：  
 ![idea-run-bcsystem](asset/idea-run-bcsystem.png)
 
