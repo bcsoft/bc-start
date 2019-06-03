@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
-  <localRepository>D:/Repositories/MavenRepository</localRepository>
+  <localRepository>D:/data/maven</localRepository>
   <servers>
     <server>
       <id>lan</id>
